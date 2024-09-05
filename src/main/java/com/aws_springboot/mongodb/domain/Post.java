@@ -1,12 +1,15 @@
 package com.aws_springboot.mongodb.domain;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.aws_springboot.mongodb.dto.AuthorDTO;
+import com.aws_springboot.mongodb.dto.CommentDTO;
 
 @Document
 public class Post {
@@ -18,6 +21,7 @@ public class Post {
 	private String body;
 
 	private AuthorDTO author;
+	private List<CommentDTO> comments = new ArrayList<>();
 
 	public Post() {
 	}
@@ -28,6 +32,10 @@ public class Post {
 		this.title = title;
 		this.body = body;
 		this.author = author;
+	}
+
+	public List<CommentDTO> getComments() {
+		return comments;
 	}
 
 	public String getId() {
